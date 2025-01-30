@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6C5CE7;
+            --secondary: #FF7675;
+            --accent: #FFD700;
+            --dark: #2D3436;
+            --light: #F8F9FF;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: var(--gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            position: relative;
+            padding: 2rem;
+        }
+
+        .logo {
+            font-size: 8vmax;
+            font-weight: 900;
+            color: white;
+            text-align: center;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: logoFloat 3s ease infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-1rem); }
+        }
+
+        .contact-fab {
+            position: fixed;
+            right: 2rem;
+            bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .contact-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 15px rgba(108,92,231,0.3);
+        }
+
+        .contact-icon:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: var(--secondary);
+        }
+
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4rem;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(15deg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .benefits {
+            background: var(--dark);
+            color: white;
+            padding: 6rem 2rem;
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        [data-aos] {
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        [data-aos="fade-up"] {
+            transform: translateY(50px);
+        }
+
+        [data-aos].animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 4rem;
+            }
+            
+            .contact-fab {
+                right: 1rem;
+                bottom: 1rem;
+            }
+            
+            .contact-icon {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-fab">
+        <a href="tel:+79875194109" class="contact-icon">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/79875194109" class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://t.me/+79875194109" class="contact-icon">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
+    </div>
+
+    <header class="hero">
+        <h1 class="logo">ТехноЛайн</h1>
+    </header>
+
+    <section data-aos="fade-up">
+        <h2 class="section-title">Наши услуги</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <i class="fas fa-hand-holding-usd service-icon"></i>
+                <h3>Скупка техники</h3>
+                <p>Профессиональная оценка и мгновенный выкуп вашей техники. Работаем с любыми брендами и состояниями.</p>
+                <ul class="service-list">
+                    <li>✓ Бесплатный выезд оценщика</li>
+                    <li>✓ Наличный и безналичный расчет</li>
+                    <li>✓ Договор и гарантии</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-tools service-icon"></i>
+                <h3>Ремонт</h3>
+                <p>Качественный ремонт с гарантией до 2 лет. Используем оригинальные запчасти и профессиональное оборудование.</p>
+                <ul class="service-list">
+                    <li>✓ Диагностика бесплатно</li>
+                    <li>✓ Ремонт на дому или в сервисе</li>
+                    <li>✓ Экспресс-ремонт за 24 часа</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-tag service-icon"></i>
+                <h3>Продажа</h3>
+                <p>Восстановленная техника премиум-класса с гарантией 1 год. Полная предпродажная подготовка.</p>
+                <ul class="service-list">
+                    <li>✓ 100% проверка качества</li>
+                    <li>✓ Рассрочка и трейд-ин</li>
+                    <li>✓ Бесплатная доставка</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section data-aos="fade-up">
+        <h2 class="section-title">Примеры работ</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/random/600x400?washing-machine" alt="Стиральная машина">
+            </div>
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/random/600x400?refrigerator" alt="Холодильник">
+            </div>
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/random/600x400?oven" alt="Духовой шкаф">
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits" data-aos="fade-up">
+        <h2 class="section-title">Почему мы?</h2>
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <h3>15 лет опыта</h3>
+                <p>Более 5000 успешных ремонтов и сделок</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Гарантия 2 года</h3>
+                <p>Официальная гарантия на все виды работ</p>
+            </div>
+            <div class="benefit-card">
+                <h3>24/7 поддержка</h3>
+                <p>Круглосуточная помощь и консультации</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
